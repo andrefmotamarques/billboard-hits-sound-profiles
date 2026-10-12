@@ -1,0 +1,7 @@
+data/*.csv
+!data/norway_data.csv
+.ipynb_checkpoints/
+__pycache__/
+.RData
+.Rhistory
+.DS_Store

@@ -1,4 +1,8 @@
 import os
+from pathlib import Path
+
+# Data is read from the data/ folder next to this script, wherever the repo was downloaded
+DATA_DIR = Path(__file__).resolve().parent / "data"
 os.environ["PYSPARK_SUBMIT_ARGS"] = "--driver-memory 4g --executor-memory 4g pyspark-shell"
 
 from pyspark.sql import SparkSession
@@ -22,13 +26,13 @@ df_bb = spark.read.format("csv") \
     .option("header", "true").option("inferSchema", "true") \
     .option("sep", ",").option("quote", '"').option("escape", '"') \
     .option("multiLine", "true") \
-    .load("data/billboard.csv")
+    .load(str(DATA_DIR / "billboard.csv"))
 
 df_af = spark.read.format("csv") \
     .option("header", "true").option("inferSchema", "true") \
     .option("sep", ",").option("quote", '"').option("escape", '"') \
     .option("multiLine", "true") \
-    .load("data/audio_features.csv")
+    .load(str(DATA_DIR / "audio_features.csv"))
 
 # casts
 df_bb = df_bb.withColumn("week_position", col("week_position").cast("double"))

@@ -29,15 +29,20 @@ The profiles are clearly associated with decade (Cramér's V = 0.28). Acoustic/o
 
 ```
 kmeans_hits.py        # full PySpark pipeline: load, weight, scale, K-means, evaluation, plots
-report.pdf            # full written report (Portuguese)
-data/                 # place billboard.csv and audio_features.csv here (not included, ~55 MB)
+data/                 # billboard.csv and audio_features.csv (Data.World)
+report_en.pdf         # full written report (English)
+report_pt.pdf         # original report (Portuguese)
+requirements.txt      # Python dependencies
 ```
 
 ## How to run
 
-1. Download the *Billboard Hot weekly charts* and *Spotify audio features* datasets (Data.World) into `data/` as `billboard.csv` and `audio_features.csv`.
-2. `pip install pyspark numpy pandas scipy plotly`
-3. `python kmeans_hits.py`. Interactive Plotly charts are saved as HTML files.
+```bash
+pip install -r requirements.txt
+python kmeans_hits.py
+```
+
+The script reads the data from the `data/` folder next to it, so it can be run from any folder. PySpark needs Java (8, 11 or 17) installed. Interactive Plotly charts are saved as HTML files.
 
 ## Tech stack
 
@@ -45,4 +50,4 @@ PySpark (Spark SQL, MLlib) · pandas · NumPy · Plotly
 
 ## Team
 
-André Marques and Afonso Claudino. The full report with the team's methodology and discussion is in [`report.pdf`](report.pdf) (Portuguese).
+André Marques and Afonso Claudino. The full report with the team's methodology and discussion is in [`report_en.pdf`](report_en.pdf) (English) and [`report_pt.pdf`](report_pt.pdf) (original, Portuguese).

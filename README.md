@@ -42,7 +42,7 @@ pip install -r requirements.txt
 python kmeans_hits.py
 ```
 
-The script reads the data from the `data/` folder next to it, so it can be run from any folder. PySpark needs Java (8, 11 or 17) installed. Interactive Plotly charts are saved as HTML files.
+The script reads the data from the `data/` folder next to it, so it can be run from any folder. PySpark needs Java installed (Java 17 or newer for PySpark 4). Interactive Plotly charts are saved as HTML files.
 
 ## Tech stack
 

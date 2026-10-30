@@ -25,6 +25,21 @@ K = 4 was chosen as the smallest k giving distinct, nameable profiles (silhouett
 
 The profiles are clearly associated with decade (Cramér's V = 0.28). Acoustic/orchestral songs made up 71% of hits in the 1950s and about 10% by the 2000s, while pop became dominant from the 1980s (60 to 71%) and high-energy songs grew from the 1990s onwards.
 
+### Reproducibility note
+
+The results above are the ones in the submitted report. Re-running `kmeans_hits.py` from this repository (tested with PySpark 3.5 and 4.2 on a local machine) gives the same four profiles with almost identical centroids, but some of the summary statistics differ:
+
+| Metric | Report | Re-run |
+|---|---|---|
+| Weighted observations | about 2.05 million | 2,053,341 |
+| Silhouette, k = 4 | 0.34 | 0.24 |
+| Silhouette, k = 2 | 0.67 | 0.32 |
+| Cramér's V (cluster × decade) | 0.28 | 0.26 |
+| Acoustic/orchestral share in the 1950s | 71% | 69% |
+| Pop share, 1980s to 2000s | 60 to 71% | 46 to 51% |
+
+The main conclusions hold: the same four sound profiles emerge, they are associated with decade, acoustic songs dominate the 1950s and fade afterwards, and pop and high-energy songs take over from the 1980s. The differences are most likely because the report was produced with an earlier iteration of the script in a different Spark environment (the silhouette is computed on a 10% random sample, and K-means initialisation depends on how Spark partitions the data), so exact values can vary between runs on different setups.
+
 ## Repository structure
 
 ```
